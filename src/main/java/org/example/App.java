@@ -14,14 +14,15 @@ public class App {
         System.out.println("== 게시판 앱 ==");
         while(true){
             System.out.print("명령) ");
-            String cmd = scanner.nextLine();
+            Rq rq = new Rq(scanner.nextLine());
+            String actionName = rq.getActionName();
 
-            if(cmd.equals("exit")){
+            if(actionName.equals("exit")){
                 System.out.print("종료 합니다...");
                 break;
             }
 
-            if(cmd.equals("write")) {
+            if(actionName.equals("write")) {
                 System.out.print("제목 : ");
                 String title = scanner.nextLine();
                 System.out.print("내용 : ");
@@ -32,7 +33,7 @@ public class App {
                 finalNum++;
             }
 
-            if(cmd.equals("list")) {
+            if(actionName.equals("list")) {
                 System.out.println("번호 | 제목 | 등록일");
                 boards.forEach(e -> System.out.printf("%d | %s | %s\n",e.getId(),e.getTitle(),e.getRegDate()));
             }
