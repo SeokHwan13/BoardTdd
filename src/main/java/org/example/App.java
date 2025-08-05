@@ -31,6 +31,11 @@ public class App {
                 System.out.printf("%s번 게시물이 등록되었습니다.\n",finalNum);
                 finalNum++;
             }
+
+            if(cmd.equals("list")) {
+                System.out.println("번호 | 제목 | 등록일");
+                boards.forEach(e -> System.out.printf("%d | %s | %s\n",e.getId(),e.getTitle(),e.getRegDate()));
+            }
         }
     }
 }
