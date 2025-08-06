@@ -63,6 +63,16 @@ public class App {
 
                 System.out.println("=> 게시글이 수정되었습니다.");
             }
+
+            if(actionName.equals("delete")) {
+                int parm = Integer.parseInt(rq.getParam());
+                Board board = boards.stream().filter(e -> e.getId() == parm).findFirst().orElse(null);
+                if(board == null){System.out.println("없는 게시물 입니다.");continue;}
+
+                boards.remove(board);
+
+                System.out.printf("=> %d번 게시물이 삭제되었습니다.\n", parm);
+            }
         }
     }
 }
