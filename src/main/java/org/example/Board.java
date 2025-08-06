@@ -8,17 +8,27 @@ public class Board {
     private String title;
     private String content;
     private String regDate;
+    private String modDate;
 
     public Board NewBoard(int id, String title, String content) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.regDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date());
+        this.modDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date());
         return this;
     }
 
     public int getId() {return this.id;}
+
     public String getTitle() {return this.title;}
+    public void setTitle(String title) {this.title = title;}
+
     public String getContent() {return this.content;}
+    public void setContent(String content) {this.content = content;}
+
     public String getRegDate() {return this.regDate;}
+
+    public String getModDate() {return this.modDate;}
+    public void setModDate() {this.modDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date());}
 }

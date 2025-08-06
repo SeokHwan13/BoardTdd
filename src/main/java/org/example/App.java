@@ -39,12 +39,29 @@ public class App {
             }
 
             if(actionName.equals("detail")) {
-                int num = Integer.parseInt(rq.getParam());
-                Board board = boards.stream().filter(e -> e.getId() == num).findFirst().get();
-                System.out.printf("번호 : %d\n",num);
+                int parm = Integer.parseInt(rq.getParam());
+                Board board = boards.stream().filter(e -> e.getId() == parm).findFirst().orElse(null);
+                if(board == null){System.out.println("없는 게시물 입니다.");continue;}
+                System.out.printf("번호 : %d\n",parm);
                 System.out.printf("제목 : %s\n",board.getTitle());
                 System.out.printf("내용 : %s\n",board.getContent());
                 System.out.printf("등록일 : %s\n",board.getRegDate());
+            }
+
+            if(actionName.equals("update")) {
+                int parm = Integer.parseInt(rq.getParam());
+                Board board = boards.stream().filter(e -> e.getId() == parm).findFirst().orElse(null);
+                if(board == null){System.out.println("없는 게시물 입니다.");continue;}
+                System.out.printf("제목 (현재: %s): ",board.getTitle());
+                String title = scanner.nextLine();
+                System.out.printf("내용 (현재: %s): ",board.getContent());
+                String content = scanner.nextLine();
+
+                board.setTitle(title);
+                board.setContent(content);
+                board.setModDate();
+
+                System.out.println("=> 게시글이 수정되었습니다.");
             }
         }
     }
