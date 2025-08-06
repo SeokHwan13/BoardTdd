@@ -37,6 +37,15 @@ public class App {
                 System.out.println("번호 | 제목 | 등록일");
                 boards.forEach(e -> System.out.printf("%d | %s | %s\n",e.getId(),e.getTitle(),e.getRegDate()));
             }
+
+            if(actionName.equals("detail")) {
+                int num = Integer.parseInt(rq.getParam());
+                Board board = boards.stream().filter(e -> e.getId() == num).findFirst().get();
+                System.out.printf("번호 : %d\n",num);
+                System.out.printf("제목 : %s\n",board.getTitle());
+                System.out.printf("내용 : %s\n",board.getContent());
+                System.out.printf("등록일 : %s\n",board.getRegDate());
+            }
         }
     }
 }
